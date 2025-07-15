@@ -12,16 +12,6 @@ import 'presentation/blocs/auth/auth_event.dart';
 import 'presentation/blocs/user/user_bloc.dart';
 import 'presentation/routes/app_router.dart';
 
-// Future<void> main() async {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   await di.init();
-
-//   runApp(const MaterialApp(
-//     home: HomeScreen(),
-//   ));
-// }
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
