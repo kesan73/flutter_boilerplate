@@ -1,3 +1,4 @@
+// lib/domain/entities/auth_user.dart - 수정된 버전
 import 'package:equatable/equatable.dart';
 
 class AuthUser extends Equatable {
@@ -48,5 +49,43 @@ class AuthUser extends Equatable {
       createdAt: createdAt ?? this.createdAt,
       lastSignInAt: lastSignInAt ?? this.lastSignInAt,
     );
+  }
+
+  // JSON 직렬화
+  Map<String, dynamic> toJson() {
+    return {
+      'uid': uid,
+      'email': email,
+      'displayName': displayName,
+      'photoURL': photoURL,
+      'emailVerified': emailVerified,
+      'createdAt': createdAt?.toIso8601String(),
+      'lastSignInAt': lastSignInAt?.toIso8601String(),
+    };
+  }
+
+  // JSON 역직렬화
+  factory AuthUser.fromJson(Map<String, dynamic> json) {
+    return AuthUser(
+      uid: json['uid'] as String,
+      email: json['email'] as String,
+      displayName: json['displayName'] as String?,
+      photoURL: json['photoURL'] as String?,
+      emailVerified: json['emailVerified'] as bool,
+      createdAt: json['createdAt'] != null
+          ? DateTime.parse(json['createdAt'] as String)
+          : null,
+      lastSignInAt: json['lastSignInAt'] != null
+          ? DateTime.parse(json['lastSignInAt'] as String)
+          : null,
+    );
+  }
+
+  // toString 메서드 (디버깅용)
+  @override
+  String toString() {
+    return 'AuthUser(uid: $uid, email: $email, displayName: $displayName, '
+        'photoURL: $photoURL, emailVerified: $emailVerified, '
+        'createdAt: $createdAt, lastSignInAt: $lastSignInAt)';
   }
 }

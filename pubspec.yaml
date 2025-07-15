@@ -59,6 +59,27 @@ dependencies:
   dartz: ^0.10.1
   go_router: ^15.1.2
 
+  # 소셜 로그인
+  google_sign_in: ^6.1.5
+  sign_in_with_apple: ^6.1.2
+  flutter_facebook_auth: ^7.1.2
+  
+  # 보안
+  flutter_secure_storage: ^9.0.0
+  local_auth: ^2.1.7
+  crypto: ^3.0.3
+  
+  # 로깅 및 디버깅
+  logger: ^2.6.0
+  
+  # 상태 관리 개선
+  freezed_annotation: ^2.4.1
+  json_annotation: ^4.8.1
+  
+  # 네트워크 및 이미지
+  image_picker: ^1.0.4
+  permission_handler: ^11.0.1
+  
 
 dev_dependencies:
   flutter_test:

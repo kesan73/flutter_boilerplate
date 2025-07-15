@@ -1,25 +1,32 @@
 class ServerException implements Exception {
   final String message;
   final int? statusCode;
+  final String? errorCode;
 
   // 수정: 첫 번째 위치 매개변수 제거, message만 명명 매개변수로 사용
   const ServerException({
     required this.message,
     this.statusCode,
+    this.errorCode,
   });
 
   @override
   String toString() =>
-      'ServerException: $message${statusCode != null ? ' (Status: $statusCode)' : ''}';
+      'ServerException: $message${statusCode != null ? ' (Status: $statusCode)' : ''}${errorCode != null ? ' (Code: $errorCode)' : ''}';
 }
 
 class NetworkException implements Exception {
   final String message;
+  final String? errorCode;
 
-  const NetworkException({required this.message});
+  const NetworkException({
+    required this.message,
+    this.errorCode,
+  });
 
   @override
-  String toString() => 'NetworkException: $message';
+  String toString() =>
+      'NetworkException: $message${errorCode != null ? ' (Code: $errorCode)' : ''}';
 }
 
 class CacheException implements Exception {
@@ -31,13 +38,26 @@ class CacheException implements Exception {
   String toString() => 'CacheException: $message';
 }
 
+enum AuthExceptionType {
+  general,
+  invalidCredentials,
+  userNotFound,
+  emailAlreadyInUse,
+  weakPassword,
+  networkError,
+  userDisabled,
+  tooManyRequests,
+}
+
 class AuthException implements Exception {
   final String message;
   final String? code;
+  final AuthExceptionType type;
 
   const AuthException({
     required this.message,
     this.code,
+    this.type = AuthExceptionType.general,
   });
 
   @override

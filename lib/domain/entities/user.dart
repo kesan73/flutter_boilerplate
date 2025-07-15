@@ -1,3 +1,4 @@
+// lib/domain/entities/user.dart - 수정된 버전
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
@@ -63,5 +64,48 @@ class User extends Equatable {
       updatedAt: updatedAt ?? this.updatedAt,
       isActive: isActive ?? this.isActive,
     );
+  }
+
+  // JSON 직렬화
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'email': email,
+      'name': name,
+      'profileImageUrl': profileImageUrl,
+      'phoneNumber': phoneNumber,
+      'birthdate': birthdate?.toIso8601String(),
+      'gender': gender,
+      'createdAt': createdAt.toIso8601String(),
+      'updatedAt': updatedAt.toIso8601String(),
+      'isActive': isActive,
+    };
+  }
+
+  // JSON 역직렬화
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      id: json['id'] as String,
+      email: json['email'] as String,
+      name: json['name'] as String,
+      profileImageUrl: json['profileImageUrl'] as String?,
+      phoneNumber: json['phoneNumber'] as String?,
+      birthdate: json['birthdate'] != null
+          ? DateTime.parse(json['birthdate'] as String)
+          : null,
+      gender: json['gender'] as String?,
+      createdAt: DateTime.parse(json['createdAt'] as String),
+      updatedAt: DateTime.parse(json['updatedAt'] as String),
+      isActive: json['isActive'] as bool? ?? true,
+    );
+  }
+
+  // toString 메서드 (디버깅용)
+  @override
+  String toString() {
+    return 'User(id: $id, email: $email, name: $name, '
+        'profileImageUrl: $profileImageUrl, phoneNumber: $phoneNumber, '
+        'birthdate: $birthdate, gender: $gender, '
+        'createdAt: $createdAt, updatedAt: $updatedAt, isActive: $isActive)';
   }
 }

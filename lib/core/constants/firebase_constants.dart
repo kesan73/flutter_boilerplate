@@ -18,10 +18,18 @@ class FirebaseConstants {
   static const String phoneNumberField = 'phoneNumber';
   static const String birthdateField = 'birthdate';
   static const String genderField = 'gender';
+  static const String emailVerifiedField = 'emailVerified';
+  static const String lastLoginField = 'lastLogin';
+  static const String loginMethodField = 'loginMethod';
 
   // Auth Provider IDs
   static const String emailProvider = 'password';
   static const String googleProvider = 'google.com';
   static const String facebookProvider = 'facebook.com';
   static const String appleProvider = 'apple.com';
+
+  // Security Rules 상수
+  static const String readPermission = 'read';
+  static const String writePermission = 'write';
+  static const String deletePermission = 'delete';
 }
