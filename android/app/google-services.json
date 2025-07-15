@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "514691733377",
+    "project_id": "boilerplate-416b1",
+    "storage_bucket": "boilerplate-416b1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514691733377:android:6adaae481c693707507a80",
+        "android_client_info": {
+          "package_name": "com.example.boilerplate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjgDjxB_XvJ1nxFjUQgaV_QOj38AsWLYA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
